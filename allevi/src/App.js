@@ -13,17 +13,8 @@ import {
   Redirect,
 } from 'react-router-dom'
 
-let Login = () => (
-  <div>
-    Login
-  </div>
-)
-
-let Home = () => (
-  <div>
-    Home
-  </div>
-)
+import Home from './home/Home';
+import Login from './login/Login';
 
 function App() {
   return (
