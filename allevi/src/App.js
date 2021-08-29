@@ -5,6 +5,7 @@
  * 2. See User's Printers
  */
 
+import { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,13 +13,24 @@ import {
   Link,
   Redirect,
 } from 'react-router-dom';
+import AppContext from './AppContext';
 
 import Home from './home/Home';
 import Login from './login/Login';
 
-function App() {
+const AppProvider = ({ children }) => {
+  const [userData, setUserData] = useState({ });
+
   return (
-    <div className="App">
+    <AppContext.Provider value={{ userData, setUserData }}>
+      {children}
+    </AppContext.Provider>
+  )
+}
+
+let App = () => {
+  return (
+    <AppProvider>
       <Router>
         <nav>
           <ul>
@@ -42,7 +54,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </AppProvider>
   );
 }
 
