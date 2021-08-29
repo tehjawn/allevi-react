@@ -43,9 +43,6 @@ let App = () => {
           </ul>
         </nav>
         <Switch>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
           <Route path="/home">
             <Home />
           </Route>
