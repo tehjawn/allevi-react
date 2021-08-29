@@ -11,7 +11,7 @@ import {
   Route,
   Link,
   Redirect,
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 import Home from './home/Home';
 import Login from './login/Login';
