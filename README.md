@@ -138,3 +138,10 @@ Example:
 # TODO: Add your running instructions here
 ```
 
+## Running Instructions:
+
+> cd allevi
+
+> npm install
+
+> npm start
