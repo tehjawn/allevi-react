@@ -20,9 +20,13 @@ import Login from './login/Login';
 
 const AppProvider = ({ children }) => {
   const [userData, setUserData] = useState({ });
+  const [printerData, setPrinterData] = useState([])
 
   return (
-    <AppContext.Provider value={{ userData, setUserData }}>
+    <AppContext.Provider value={{ 
+      userData, setUserData,
+      printerData, setPrinterData
+    }}>
       {children}
     </AppContext.Provider>
   )

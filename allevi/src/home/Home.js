@@ -7,14 +7,17 @@ let getPrinterData = (token) => {
 }
 
 let PrinterData = () => {
-    const { userData } = useContext(AppContext)
-    let [printerData, setPrinterData] = useState([])
+    const { 
+        userData,
+        printerData,
+        setPrinterData
+    } = useContext(AppContext)
 
     useEffect(() => {
         getPrinterData(userData.token ?? '')
             .then(res => {
                 console.log(res.data)
-                setPrinterData(JSON.parse(res.data.printers))
+                setPrinterData(res.data.printers)
             })
             .catch(err => {
                 console.log(err)
@@ -23,13 +26,20 @@ let PrinterData = () => {
 
     return (
         <div>
+            <div>
+                Hello {userData.firstName} {userData.lastName}, these are your printers:
+            </div>
             {
                 printerData.length > 0
-                    ? <div>{
-                        printerData.map(printer => 
-                            <div>{printer.name}</div>    
-                        )
-                    }</div>
+                    ? <>{
+                        printerData.map((printer, i) =>  (
+                            <div key={i}>
+                                <p>{printer.name}</p>
+                                <p>serial: {printer.serialNumber}</p>
+                                <p>model: {printer.modelNumber}</p>
+                            </div>
+                        ))
+                    }</>
                     : <div>No printer data available!</div>
             }
         </div>
