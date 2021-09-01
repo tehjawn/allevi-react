@@ -3,8 +3,8 @@ import AppContext from '../AppContext';
 const axios = require('axios');
 
 let LoginForm = () => {
-    const { setUserData } = useContext(AppContext)
-    const [loginData, setLoginData] = useState({ })
+    const { setUserData } = useContext(AppContext);
+    const [loginData, setLoginData] = useState({ });
 
     const postLogin = (evt) => {
         evt.preventDefault();

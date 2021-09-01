@@ -5,7 +5,7 @@
  * 2. See User's Printers
  */
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,7 +25,7 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider value={{ 
       userData, setUserData,
-      printerData, setPrinterData
+      printerData, setPrinterData,
     }}>
       {children}
     </AppContext.Provider>
@@ -33,6 +33,8 @@ const AppProvider = ({ children }) => {
 }
 
 let App = () => {
+  let { userData, printerData } = useContext(AppContext);
+
   return (
     <AppProvider>
       <Router>
@@ -46,12 +48,21 @@ let App = () => {
             </li>
           </ul>
         </nav>
+        <div>
+          test
+          {() => alert(JSON.stringify(userData))}
+          {JSON.stringify(printerData)}
+        </div>
         <Switch>
           <Route path="/home">
             <Home />
           </Route>
           <Route path="/login">
-            <Login />
+            {
+              userData == {}
+                ? <Redirect to="/home" />
+                : <Login />
+            }
           </Route>
         </Switch>
       </Router>

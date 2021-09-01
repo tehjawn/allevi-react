@@ -7,7 +7,7 @@ let getPrinterData = (token) => {
 }
 
 let PrinterData = () => {
-    const { 
+    const {
         userData,
         printerData,
         setPrinterData
@@ -26,20 +26,20 @@ let PrinterData = () => {
 
     return (
         <div>
-            <div>
-                Hello {userData.firstName} {userData.lastName}, these are your printers:
-            </div>
             {
                 printerData.length > 0
-                    ? <>{
-                        printerData.map((printer, i) =>  (
-                            <div key={i}>
-                                <p>{printer.name}</p>
-                                <p>serial: {printer.serialNumber}</p>
-                                <p>model: {printer.modelNumber}</p>
-                            </div>
-                        ))
-                    }</>
+                    ? <>
+                        <div>
+                            Hello {userData.firstName} {userData.lastName}, these are your printers:
+                        </div>{
+                            printerData.map((printer, i) => (
+                                <div key={i}>
+                                    <p>{printer.name}</p>
+                                    <p>serial: {printer.serialNumber}</p>
+                                    <p>model: {printer.modelNumber}</p>
+                                </div>
+                            ))
+                        }</>
                     : <div>No printer data available!</div>
             }
         </div>
